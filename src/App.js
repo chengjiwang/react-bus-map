@@ -1,23 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { fetchBuses } from 'features/bus/busSlice';
+import { BusList } from 'features/bus/BusList/BusList';
+import 'antd/dist/antd.css';
 
 function App() {
+  const dispatch = useDispatch();
+  const originalData = useSelector(state => state.bus.originalData);
+  const filterData = useSelector(state => state.bus.filterData);
+  const status = useSelector(state => state.bus.status);
+
+  useEffect(() => {
+    if(status === 'idle') {
+      dispatch(fetchBuses());
+    }
+  }, [status, dispatch]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <BusList originalData={originalData} filterData={filterData} />
     </div>
   );
 }
