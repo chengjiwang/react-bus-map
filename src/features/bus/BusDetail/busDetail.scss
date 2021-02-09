@@ -1,0 +1,14 @@
+.detail {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 25px;
+  height: 600px;
+  .detail-input {
+    margin: 5px 0 15px 0;
+  }
+  .update-time {
+    margin-top: auto;
+  }
+}

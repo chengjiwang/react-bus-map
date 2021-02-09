@@ -4,12 +4,12 @@ import { apiGetBuses } from 'api/EventService';
 const initialState = {
   originalData: [],
   filterData: [],
+  busDetail: {},
   status: 'idle'
 };
 
 export const fetchBuses = createAsyncThunk('bus/fetchBuses', async () => {
   const response = await apiGetBuses();
-  // console.log(response.data);
   return response.data
 });
 
@@ -24,16 +24,23 @@ const busSlice = createSlice({
       if (filterBus) {
         state.filterData = filterBus;
       }
-    }
+    },
+    busDetail(state, action) {
+      const detail = state.originalData.find(
+        item => item.PlateNumb === action.payload
+      );
+      state.busDetail = detail;
+    },
   },
   extraReducers: {
     [fetchBuses.fulfilled]: (state, action) => {
       state.status = 'succeeded';
       state.originalData = action.payload;
       state.filterData = action.payload;
+      state.busDetail.UpdateTime = action.payload[0].UpdateTime;
     }
   }
 });
 
-export const { filterBus } = busSlice.actions;
+export const { filterBus, busDetail } = busSlice.actions;
 export default busSlice.reducer;
