@@ -1,7 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Row, Col, Table, Menu, Dropdown, Button } from 'antd';
-import { DownOutlined } from '@ant-design/icons';
+import { Row, Col, Table, Select } from 'antd';
 
 import { filterBus } from 'features/bus/busSlice';
 import './busList.scss';
@@ -30,6 +29,7 @@ const columns = [
 ];
 
 export const BusList = ({ originalData, filterData }) => {
+  const { Option } = Select;
   const dispatch = useDispatch();
   let routeName = [];
   const getRouteName = () => {
@@ -41,26 +41,15 @@ export const BusList = ({ originalData, filterData }) => {
   }
   getRouteName();
 
-  const menuItem = routeName.map((item, index) => {
+  const option = routeName.map((item, index) => {
     return (
-      <Menu.Item key={index}>
-        {item}
-      </Menu.Item>
+      <Option value={item} key={index}>{item}</Option>
     )
   });
 
-  const menu = () => {
-    const handleMenuClick = (e) => {
-      const selectItem = e.item.props.children[1];
-      dispatch(filterBus(selectItem));
-    };
-
-    return (
-      <Menu onClick={handleMenuClick}>
-        {menuItem}
-      </Menu>
-    )
-  }
+  const handleRouteChange = (value) => {
+    dispatch(filterBus(value));
+  };
 
   return (
     <div className="list">
@@ -74,11 +63,13 @@ export const BusList = ({ originalData, filterData }) => {
         </Col>
         <Col span={6} className="filter">
           <h2 className="filter-title">Filter</h2>
-          <Dropdown overlay={menu}>
-            <Button>
-              行車路線 <DownOutlined />
-            </Button>
-          </Dropdown>
+          <Select
+            defaultValue="行車路線" 
+            style={{ width: 170 }}
+            onChange={handleRouteChange}
+          >
+            {option}
+          </Select>
         </Col>
       </Row> 
     </div>    

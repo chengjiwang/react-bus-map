@@ -15,16 +15,23 @@ function App() {
   const filterData = useSelector(state => state.bus.filterData);
   const busDetail = useSelector(state => state.bus.busDetail)
   const status = useSelector(state => state.bus.status);
-
+  
   useEffect(() => {
     if(status === 'idle') {
       dispatch(fetchBuses());
     }
+    let timerID = setInterval(
+      () => dispatch(fetchBuses()),
+      600000
+    );
+    return function cleanup() {
+      clearInterval(timerID);
+    };
   }, [status, dispatch]);
   
   return (
     <div className="app">
-      <h1>嘉義 Live Map</h1>
+      <h1>嘉義市 Live Bus Map</h1>
       <Row gutter={32}>
         <Col span={6}>
           <BusDetail busDetail={busDetail} />

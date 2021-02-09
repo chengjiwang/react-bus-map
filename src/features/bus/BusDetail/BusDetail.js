@@ -1,13 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Input } from 'antd';
 import { format } from 'date-fns';
 
 import './busDetail.scss';
 
 export const BusDetail = ({ busDetail }) => {
-
+  const time = useSelector(state => state.bus.updateTime);
   const RouteName = busDetail.RouteName === undefined ? '' : busDetail.RouteName.Zh_tw;
-
+  let updateTime = time ? format(new Date(time), 'MM/dd H:mm') : '';
+  
   return (
     <div className="detail">
       <label htmlFor="plateNumb">車牌號碼</label>
@@ -39,7 +41,7 @@ export const BusDetail = ({ busDetail }) => {
         placeholder="行車速度" 
       />
       <div className="update-time">
-        <span>最後更新 { format(new Date(busDetail.UpdateTime ), 'MM/dd H:mm') }</span>
+        <span>最後更新 { updateTime }</span>
       </div>    
     </div>
   )

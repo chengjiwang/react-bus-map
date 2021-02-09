@@ -5,7 +5,8 @@ const initialState = {
   originalData: [],
   filterData: [],
   busDetail: {},
-  status: 'idle'
+  status: 'idle',
+  updateTime: ''
 };
 
 export const fetchBuses = createAsyncThunk('bus/fetchBuses', async () => {
@@ -37,7 +38,7 @@ const busSlice = createSlice({
       state.status = 'succeeded';
       state.originalData = action.payload;
       state.filterData = action.payload;
-      state.busDetail.UpdateTime = action.payload[0].UpdateTime;
+      state.updateTime = new Date().toISOString();
     }
   }
 });
