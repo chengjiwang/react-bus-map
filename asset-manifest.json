@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/react-bus-map/static/css/main.6c97b267.chunk.css",
+    "main.js": "/react-bus-map/static/js/main.fdec7916.chunk.js",
+    "main.js.map": "/react-bus-map/static/js/main.fdec7916.chunk.js.map",
+    "runtime-main.js": "/react-bus-map/static/js/runtime-main.b2a57f36.js",
+    "runtime-main.js.map": "/react-bus-map/static/js/runtime-main.b2a57f36.js.map",
+    "static/css/2.fd98dc35.chunk.css": "/react-bus-map/static/css/2.fd98dc35.chunk.css",
+    "static/js/2.2b825b6e.chunk.js": "/react-bus-map/static/js/2.2b825b6e.chunk.js",
+    "static/js/2.2b825b6e.chunk.js.map": "/react-bus-map/static/js/2.2b825b6e.chunk.js.map",
+    "static/js/3.f1885cc3.chunk.js": "/react-bus-map/static/js/3.f1885cc3.chunk.js",
+    "static/js/3.f1885cc3.chunk.js.map": "/react-bus-map/static/js/3.f1885cc3.chunk.js.map",
+    "index.html": "/react-bus-map/index.html",
+    "static/css/2.fd98dc35.chunk.css.map": "/react-bus-map/static/css/2.fd98dc35.chunk.css.map",
+    "static/css/main.6c97b267.chunk.css.map": "/react-bus-map/static/css/main.6c97b267.chunk.css.map",
+    "static/js/2.2b825b6e.chunk.js.LICENSE.txt": "/react-bus-map/static/js/2.2b825b6e.chunk.js.LICENSE.txt",
+    "static/media/bus.bef1af57.svg": "/react-bus-map/static/media/bus.bef1af57.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b2a57f36.js",
+    "static/css/2.fd98dc35.chunk.css",
+    "static/js/2.2b825b6e.chunk.js",
+    "static/css/main.6c97b267.chunk.css",
+    "static/js/main.fdec7916.chunk.js"
+  ]
+}
